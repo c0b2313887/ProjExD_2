@@ -17,15 +17,15 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def roto():
     kkt_img = pg.image.load("fig/3.png")
     DIRECTION_kk = {
-    (0,0):pg.transform.rotozoom(kkt_img, 0, 1.0),
-    (-5,0):pg.transform.rotozoom(kkt_img, 0, 1.0),
-    (-5,5):pg.transform.rotozoom(kkt_img, 45, 1.0),
-    (0,5):pg.transform.rotozoom(kkt_img,90, 1.0),
-    (5,5):pg.transform.rotozoom(kkt_img,135, 1.0),
-    (5,0):pg.transform.rotozoom(kkt_img,180, 1.0),
-    (5,-5):pg.transform.rotozoom(kkt_img,225, 1.0),
-    (0,-5):pg.transform.rotozoom(kkt_img,270, 1.0),
-    (-5,-5):pg.transform.rotozoom(kkt_img,315, 1.0),
+    (0,0):pg.transform.rotozoom(kkt_img, 0, 2.0),
+    (-5,0):pg.transform.rotozoom(kkt_img, 0, 2.0),
+    (-5,5):pg.transform.rotozoom(kkt_img, 45, 2.0),
+    (0,5):pg.transform.rotozoom(kkt_img,90, 2.0),
+    (5,5):pg.transform.rotozoom(kkt_img,135, 2.0),
+    (5,0):pg.transform.rotozoom(kkt_img,180, 2.0),
+    (5,-5):pg.transform.rotozoom(kkt_img,225, 2.0),
+    (0,-5):pg.transform.rotozoom(kkt_img,270, 2.0),
+    (-5,-5):pg.transform.rotozoom(kkt_img,315, 2.0),
 }
     return DIRECTION_kk
 
@@ -58,7 +58,7 @@ def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     bg_img = pg.image.load("fig/pg_bg.jpg")    
-    kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 1.0)
+    kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
     kk_img = pg.transform.flip(kk_img, True, False)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
@@ -76,7 +76,7 @@ def main():
             if event.type == pg.QUIT: 
                 return
         if kk_rct.colliderect(bb_rct): #衝突判定
-            return #ゲームオーバー
+            return # ゲームオーバー
         screen.blit(bg_img, [0, 0]) 
 
 
