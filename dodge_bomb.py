@@ -30,6 +30,15 @@ def roto():
     return DIRECTION_kk
 
 
+#def bombig():
+    #accs = [a for a in range(1, 11)]
+    #bomb = []
+    #for r in range(1, 11):
+        #bb_img = pg.Surface((20*r, 20*r))
+        #pg.draw.circle(bb_img, (255, 0, 0), (10*r, 10*r), 10*r)
+    #return tuple(accs,)
+
+
 def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     """
     引数：こうかとんRectかばくだんRect
