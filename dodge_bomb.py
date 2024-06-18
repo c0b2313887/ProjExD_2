@@ -5,7 +5,7 @@ import pygame as pg
 
 
 WIDTH, HEIGHT = 1600, 900
-DELTA = {# 移動量辞書
+DELTA = { # 移動量辞書
     pg.K_UP:(0,-5),
     pg.K_DOWN:(0,5),
     pg.K_LEFT:(-5,0),
@@ -17,7 +17,7 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     """
     引数：こうかとんRectかばくだんRect
-    戻り値：タプル（横方向判定結果，縦方向判定結果）
+    戻り値：真理値タプル（横方向判定結果，縦方向判定結果）
     画面内ならTrue，画面外ならFalse
     """
 
@@ -36,9 +36,9 @@ def main():
     kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 2.0)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
-    bb_img = pg.Surface((20,20))
+    bb_img = pg.Surface((20,20)) # 1辺が20の空のSurfaceを作る
     bb_img.set_colorkey((0, 0, 0))
-    pg.draw.circle(bb_img, (255, 0, 0),(10, 10), 10)
+    pg.draw.circle(bb_img, (255, 0, 0),(10, 10), 10) # 空のSurfaceに赤い円を描く
     bb_rct = bb_img.get_rect()
     bb_rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
     vx, vy = +5, +5  # 爆弾の横方向速度，縦方向速度
@@ -48,6 +48,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
+        if kk_rct.colliderect(bb_rct): #衝突判定
+            return #ゲームオーバー
         screen.blit(bg_img, [0, 0]) 
 
 
